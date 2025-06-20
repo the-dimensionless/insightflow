@@ -30,9 +30,9 @@ public class OpenAIService {
             "%s"
             Return JSON like:
             {
-              "sentiment": "...",
-              "category": "...",
-              "summary": "..."
+              \"sentiment\": \"...\",
+              \"category\": \"...\",
+              \"summary\": \"...\"
             }
             """, feedback.getMessage());
 

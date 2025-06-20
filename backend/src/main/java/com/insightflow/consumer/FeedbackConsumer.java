@@ -20,11 +20,7 @@ public class FeedbackConsumer {
     @KafkaListener(topics = "feedback-input", groupId = "feedback-group")
     public void consume(Feedback feedback) {
         FeedbackEnriched enriched = openAIService.enrichFeedback(feedback);
-
-        // Store in Redis
         redisTemplate.opsForValue().set("feedback:" + feedback.getUserId(), enriched);
-
-        // Push to frontend via WebSocket
         messagingTemplate.convertAndSend("/topic/feedback", enriched);
     }
 } 
